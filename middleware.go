@@ -8,7 +8,7 @@ import (
 )
 
 // Middleware handler function that logs inbound request information
-func loggingHandler(next http.Handler) http.Handler {
+func LoggingHandler(next http.Handler) http.Handler {
 	// Define the logging code
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		t1 := time.Now()
@@ -22,7 +22,7 @@ func loggingHandler(next http.Handler) http.Handler {
 }
 
 // Middleware handler function that recovers from a panic in the underlying request handler (if it occurs)
-func recoverHandler(next http.Handler) http.Handler {
+func RecoverHandler(next http.Handler) http.Handler {
 	// Define a function that defers a function to recover from a panic
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
@@ -39,7 +39,7 @@ func recoverHandler(next http.Handler) http.Handler {
 }
 
 // Middleware handler function that will validate that a request is a POST and return if it is not
-func valPOST(next http.Handler) http.Handler {
+func ValPOST(next http.Handler) http.Handler {
 	m := "POST"
 
 	// Define a function that passes on a POST but returns for any other type of request
@@ -60,7 +60,7 @@ func valPOST(next http.Handler) http.Handler {
 }
 
 // Middleware handler function that will validate that a request is a GET and return if it is not
-func valGET(next http.Handler) http.Handler {
+func ValGET(next http.Handler) http.Handler {
 	m := "GET"
 
 	// Define a function that passes on a GET but returns for any other type of request
